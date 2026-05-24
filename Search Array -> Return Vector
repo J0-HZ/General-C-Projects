@@ -1,0 +1,88 @@
+/*
+This program will prompt users to enter elements that will be stored within an array.
+The arrays will be of size 5x5.
+
+A function named "Search_Even" will be in charge of determining whether or not an array contains even numbers
+and add each element onto a vector.
+
+If it does not contain any even numbers, then a value of '-1' will be stored at the end of the vector.
+
+A function named "Display_Locations" will show the location of where a specific element is stored.
+*/
+#include<iostream>
+#include<vector>
+using namespace std;
+
+vector<int>Search_Even(int array[5][5])
+{
+	vector<int>location;
+
+	for (int i = 0; i < 5 ; i++)
+	{
+		for(int j = 0; j < 5; j++)
+		{
+			if ((array[i][j] % 2) == 0)
+			{
+				location.push_back(i);
+				location.push_back(j);
+			}
+		}
+	}
+	if (location.empty())
+		location.push_back(-1);
+	return location;
+}
+
+void Display_Locations(const vector<int>& locations)
+{
+	unsigned int size = locations.size();
+
+	if(locations[0] == -1)
+		cout << "This array did not have any even numbers." << endl;
+	else
+	{
+		for (int i = 0; i < size; i += 2)
+		{
+			cout << locations[i] << " " << locations[i + 1] << endl;
+		}
+	}
+}
+
+int main()
+{
+	int array1[5][5];
+	int array2[5][5];
+	vector<int> even_num;
+	even_num = Search_Even(array1);
+	even_num = Search_Even(array2);
+
+	cout << "Enter the elements of the array: " << endl;
+
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			cin >> array1[i][j];
+		}
+	}
+
+	cout << "Now, enter the elements of the second array: " << endl;
+
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			cin >> array2[i][j];
+		}
+	}
+
+	cout << endl;
+    	cout << "For the first array -->" << endl;
+    	Display_Locations(Search_Even(array1));
+    
+    	cout << endl;
+    	cout << "For the second array -->" << endl;
+    	Display_Locations(Search_Even(array2));
+
+	return 0;
+}
