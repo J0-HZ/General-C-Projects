@@ -1,0 +1,137 @@
+/*
+This program will display a main menu with options that will allow the
+user to view, modify, search, or delete numbers within a vector.
+*/
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+class Data
+{
+private:
+	vector<int>numbers;
+public:
+	void Display_Menu();
+	void Input_Numbers(vector<int>);
+	void Display_Numbers(vector<int>);
+	void Search_Numbers(vector<int>, int);
+	void Delete_Numbers(vector<int>);
+
+};
+
+void Data::Display_Menu()
+{
+	cout << "************************" << endl;
+	cout << "Main Menu " << endl;
+	cout << "0 - Quit " << endl;
+	cout << "1 - Input Numbers " << endl;
+	cout << "2 - Display Numbers " << endl;
+	cout << "3 - Search Numbers " << endl;
+	cout << "4 - Delete Numbers " << endl;
+}
+
+void Data::Input_Numbers(vector<int>n)
+{
+	int amount, number;
+	n = numbers;
+
+	cout << "Input Numbers" << endl;
+	cout << "How many numbers will you enter? ";
+	cin >> amount;
+
+	for (int i = 0; i < amount; i++)
+	{
+		cout << "Input number " << i << " -> ";
+		cin >> number;
+
+		numbers.push_back(number);
+	}
+	cout << "************************" << endl;
+}
+
+void Data::Display_Numbers(vector<int>n)
+{
+	n = numbers;
+	unsigned int size = numbers.size();
+
+	cout << "Display Numbers" << endl;
+	cout << "Here are the contents of the vector: " << endl;
+	for (unsigned int i = 0; i < size; i++)
+	{
+		cout << numbers[i] << " ";
+	}
+	cout << endl;
+	cout << "************************" << endl;
+}
+
+void Data::Search_Numbers(vector<int>n, int item)
+{
+	n = numbers;
+	unsigned int size = numbers.size();
+	cout << "Search Numbers" << endl;
+
+	for (unsigned int i = 0; i < size; i++)
+	{
+		if (numbers[i] == item)
+		{
+			cout << item << " was found at index " << i << endl;
+		}
+	}
+	cout << "************************" << endl;
+}
+
+void Data::Delete_Numbers(vector<int>n)
+{
+	n = numbers;
+	unsigned int size = numbers.size();
+
+	cout << "Delete Numbers" << endl;
+	cout << "Now deleting all integers in the vector... " << endl;
+
+	for (int i = 0; i < size; i++)
+	{
+		numbers.clear();
+	}
+	cout << "************************" << endl;
+}
+
+
+int main()
+{
+	Data Selection;
+	int choice, search_item;
+	vector<int>vect_of_num;
+
+	do
+	{
+		Selection.Display_Menu();
+		cout << "Select an Option: ";
+		cin >> choice;
+		if (choice == 0)
+		{
+			exit(EXIT_SUCCESS);
+		}
+		else if (choice == 1)
+		{
+			Selection.Input_Numbers(vect_of_num);
+		}
+		else if (choice == 2)
+		{
+			Selection.Display_Numbers(vect_of_num);
+		}
+		else if (choice == 3)
+		{
+			cout << "Enter the number you are searching for: " << endl;
+			cin >> search_item;
+
+			Selection.Search_Numbers(vect_of_num, search_item);
+		}
+		else if (choice == 4)
+		{
+			Selection.Delete_Numbers(vect_of_num);
+		}
+	} while (choice != 0);
+
+	return 0;
+}
