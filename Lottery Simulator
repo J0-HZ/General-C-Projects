@@ -1,0 +1,43 @@
+/*
+This program prompts the user to enter 3 integers. At random, 3 numbers will be the winning
+lottery numbers and the program will check if the user's numbers match the lottery numbers.
+*/
+
+#include <iostream>
+#include<ctime>
+#include<cstdlib>
+using namespace std;
+
+int main()
+{
+    unsigned seed = time(NULL);
+    srand(seed);
+    
+    int num1,num2,num3;
+    int counter = 0;
+    int lott_num1 = (rand() % 99);
+    int lott_num2 = (rand() % 99);
+    int lott_num3 = (rand() % 99);
+    
+    cout << "Enter the 3 numbers you'll think will be in the lottery: " << endl;
+    cin >> num1;
+    cin >> num2;
+    cin >> num3;
+    
+    while (num1 != lott_num1 || num2 != lott_num2 || num3 != lott_num3)
+    {
+        lott_num1 = (rand() % 99);
+        lott_num2 = (rand() % 99);
+        lott_num3 = (rand() % 99);
+        counter++;
+    }
+    
+    if(num1 == lott_num1 && num2 == lott_num2 && num3 == lott_num3)
+    {
+        cout << "The winning numbers are : " << lott_num1 << " " << lott_num2 << " " << lott_num3 << endl;
+        cout << "Congrats, you won the lottery!" << endl;
+        cout << "It took " << counter << " tries to win the lottery." << endl;
+    }
+    
+    return 0;
+}
