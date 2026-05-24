@@ -1,0 +1,50 @@
+/*
+This program takes in two arrays (inputted by the user), adds them, and stores them in a new array.
+Here, the size of the array is 3x3, but can be changed.
+*/
+
+#include<iostream>
+using namespace std;
+
+const int row = 3, col = 3;
+
+void summation(int array1[row][col], int array2[row][col], int array_sum[row][col])
+{
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < col; j++)
+		{
+			array_sum[i][j] = array1[i][j] + array2[i][j];
+			cout << array_sum[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+
+int main()
+{
+	int array_n1[row][col];
+	int array_n2[row][col];
+	int array_sum[row][col];
+
+	cout << "Enter the elements of the first 2D array: " << endl;
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < col; j++)
+		{
+			cin >> array_n1[i][j];
+		}
+	}
+	cout << "Now, enter the values for the second array: " << endl;
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < col; j++)
+		{
+			cin >> array_n2[i][j];
+		}
+	}
+	cout << endl;
+	cout << "Here is the sum of the two arrays: " << endl;
+	summation(array_n1,array_n2,array_sum);
+	return 0;
+}
