@@ -1,2 +1,2 @@
-# Palindrome-Detector-Console-
-This program is a simple C++ script that takes in a users input and detects whether it is a palindrome or not. 
+# General C++ Projects
+This repository will contain my C++ projects worked on and will be made public for anyone to add changes to should they want to add improvements.
